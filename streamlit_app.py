@@ -25,7 +25,7 @@ def build_app(pdf_path: str, file_hash: str):
     vectorstore = Chroma.from_documents(chunks, embeddings)
     retriever = vectorstore.as_retriever(search_kwargs={"k": 6})
 
-    llm = ChatGroq(model="llama-3.1-8b-instant")
+    llm = ChatGroq(model="openai/gpt-oss-20b")
 
     class RouteDecision(BaseModel):
         destination: Literal["pdf", "math", "general"] = Field(
